@@ -1,5 +1,7 @@
 package model;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,33 +14,10 @@ import java.util.Scanner;
 
 public class PeopleBag {
 	
-	private ArrayList<Course> courseList = new ArrayList<>();
+	private ArrayList<Person> personList = new ArrayList<>();
 
-	public ArrayList<Course> courseList() {
-		return courseList;
-	}
-
-	// IMPORT COURSE FROM TEXTFILE
-	public void load(String filename) {
-		File input = new File(filename);
-		Scanner readFile;
-		try {
-			readFile = new Scanner(input);
-
-			while (readFile.hasNextLine()) {
-				String str = readFile.nextLine();
-				String[] temp = str.split(",");
-				String courseTitle = temp[0];
-				String courseNum = temp[1];
-				String crn = temp[2];
-				String classAdress = temp[3];
-				Course c1 = new Course(courseTitle, courseNum, crn, classAdress);
-				courseList.add(c1);
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public ArrayList<Person> personList() {
+		return personList;
 	}
 
 	// SAVE TO BINARY FILE
@@ -46,13 +25,13 @@ public class PeopleBag {
 	public void save() {
 		FileOutputStream fos;
 		try {
-			fos = new FileOutputStream("courseData.dat");
+			fos = new FileOutputStream("studentData.dat");
 
 			ObjectOutputStream oos;
 			try {
 				oos = new ObjectOutputStream(fos);
 
-				oos.writeObject(courseList);
+				oos.writeObject(personList);
 				oos.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -62,7 +41,6 @@ public class PeopleBag {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		System.out.println("File is finished writing to the hard drive");
 	}
 
@@ -70,20 +48,18 @@ public class PeopleBag {
 	public void read() {
 		FileInputStream fis;
 		try {
-			fis = new FileInputStream("courseData.dat");
+			fis = new FileInputStream("studentData.dat");
 
 			ObjectInputStream ois;
 			try {
 				ois = new ObjectInputStream(fis);
-
 				try {
-					courseList = (ArrayList<Course>) ois.readObject();
-					ois.close();
+					personList = (ArrayList<Person>) ois.readObject();
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
+				ois.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -95,56 +71,197 @@ public class PeopleBag {
 		}
 	}
 
+	// IMPORT FROM TEXT FILE
+	public void load(String filename) {
+		File input = new File(filename);
+		Scanner readFile;
+		try {
+			readFile = new Scanner(input);
+
+			while (readFile.hasNextLine()) {
+				String str = readFile.nextLine();
+				String[] stuff = str.split(",");
+				int status = Integer.parseInt(stuff[0]);
+				if (status == 0) {
+					String fname = stuff[1];
+					String lname = stuff[2];
+					String phone = stuff[3];
+					String adress = stuff[4];
+					double gpa = Double.parseDouble(stuff[5]);
+					String major = stuff[6];
+					int credits = Integer.parseInt(stuff[7]);
+					Student s1 = new Student(fname, lname, phone, adress, gpa,
+							major, credits);
+					personList.add(s1);
+				} else if (status == 1) {
+					String fname = stuff[1];
+					String lname = stuff[2];
+					String phone = stuff[3];
+					String adress = stuff[4];
+					String officeAdress = stuff[5];
+					String title = stuff[6];
+					String department = stuff[7];
+					String payScale = stuff[8];
+
+					Faculty f1 = new Faculty(fname, lname, phone, adress,
+							officeAdress, title, department, payScale);
+					personList.add(f1);
+				}
+
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	// DISPLAY METHOD
 	public void display() {
-		for (int i = 0; i < courseList.size(); i++) {
-			System.out.println(courseList.get(i));
+		for (int i = 0; i < personList.size(); i++) {
+			System.out.println(personList.get(i));
 		}
 	}
 
 	// ADD METHOD
-	public void add(Course course) {
-		courseList.add(course);
+	public void add(Student student) {
+		personList.add(student);
 	}
 
-	// Search method
-	public Course find(String crn) {
+	public void add(Faculty faculty) {
+		personList.add(faculty);
+	}
 
-		for (int i = 0; i < courseList.size(); i++) {
+	// FIND METHOD
+	public Person find(int id) {
 
-			if (courseList.get(i).getCrn().equals(crn)) {
-				return courseList.get(i);
+		for (int i = 0; i < personList.size(); i++) {
+			if (personList.get(i).getId() == id) {
+				return personList.get(i);
+
 			}
+
 		}
 		return null;
+
 	}
 
-	// REMOVE BUTTON
-	public void remove(String crn) {
+	// FIND STUDENT METHOD
+	public Student findStudent(int id) {
 
-		for (int i = 0; i < courseList.size(); i++) {
+		for (int i = 0; i < personList.size(); i++) {
 
-			if (courseList.get(i).getCrn().equals(crn)) {
-				courseList.remove(i);
-				System.out.println("item was removed");
+			if (personList().get(i).getStatus() == 0) {
+				if (personList.get(i).getId() == id) {
+					return (Student) personList.get(i);
+				}
+			} else {
+
 			}
+
 		}
+		return null;
+
+	}
+	public Student findStudentLN( String lastName)
+	{
+		
+		for (int i = 0; i < personList.size(); i++) {
+			
+			if (personList().get(i).getStatus() == 0) {
+				
+				if (personList.get(i).getLname().equals(lastName)) {
+					return  (Student) personList.get(i);
+				}
+			} else {
+
+			}
+
+		}
+		return null;
+		
+		
 	}
 	
-	public Course findCourse ( String title)
-	{ 
-		
-		for (int i = 0; i < courseList.size(); i++) {
-			//System.out.println(title);
-			//System.out.println(courseList.get(i).getCourseTitle());
-			
-			if (courseList.get(i).getCourseTitle().equals(title)) {
-				return courseList.get(i);
+	//FIND FACULTY
+		public Faculty findFaculty(int id) {
+
+			for (int i = 0; i < personList.size(); i++) {
+
+				if (personList().get(i).getStatus() == 1) {
+					if (personList.get(i).getId() == id) {
+						return (Faculty) personList.get(i);
+					}
+				} else {
+
+				}
 
 			}
+			return null;
 
 		}
-		return null;
 		
+		public Faculty findFacultyLN( String lastName)
+		{
+			
+			for (int i = 0; i < personList.size(); i++) {
+				
+				if (personList().get(i).getStatus() == 1) {
+					
+					if (personList.get(i).getLname().equals(lastName)) {
+						return  (Faculty) personList.get(i);
+					}
+				} else {
+
+				}
+
+			}
+			return null;
+			
+			
+		}
+		
+
+	// DELETE METHOD
+	public void remove(int id) {
+		for (int i = 0; i < personList.size(); i++) {
+
+			if (personList.get(i).getId() == id) {
+				System.out.println("Object was removed");
+				personList.remove(i);
+			}
+		}
+	}
+
+	// READ COUNT FROM BINARY FILE
+	public void readID() {
+		DataInputStream dis;
+		try {
+			dis = new DataInputStream(new FileInputStream("count.dat"));
+
+			int a = dis.readInt();
+
+			Person.setCount(a);
+
+			dis.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	// SAVES COUNT TO BINARY
+	public void saveID() {
+		try {
+			DataOutputStream os = new DataOutputStream(new FileOutputStream(
+					"count.dat"));
+			os.writeInt(Person.getCount());
+			os.close();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 }

@@ -1,6 +1,4 @@
-package model;
 
-public class CourseBag {
 	package model;
 
 	import java.io.File;
@@ -151,4 +149,4 @@ public class CourseBag {
 
 	}
 
-}
+

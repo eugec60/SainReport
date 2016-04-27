@@ -1,16 +1,10 @@
-package controller;
+package view;
 
 import java.io.IOException;
 
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import view.CoursePane;
-import view.FacultyPane;
-import view.MenuBars;
-import view.StudentPane;
-import view.TabsPane;
-import view.TextbookPane;
 
 public class MainWindow {
 	
@@ -31,6 +25,16 @@ public class MainWindow {
 		primaryStage.show();
 
 	}
+
+	public TabsPane getTabsPane() {
+		return tabsPane;
+	}
+
+	public MenuBars getMenu() {
+		return menu;
+	}
+	
+	
 	
 	
 

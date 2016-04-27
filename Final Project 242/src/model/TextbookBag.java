@@ -14,7 +14,7 @@ public class TextbookBag {
 	
 	private ArrayList<Textbook> textbookList = new ArrayList<>();
 
-	public ArrayList<Textbook> textbookList() {
+	public ArrayList<Textbook> getTextbookList() {
 		return textbookList;
 	}
 

@@ -12,6 +12,7 @@ public class TabsPane {
 	TextbookPane tPane = new TextbookPane();
 	SainPane sainPane = new SainPane();
 	LoginPane loginPane = new LoginPane();
+	WhatIfPane whatIfPane = new WhatIfPane();
 
 	public TabsPane() {
 		
@@ -37,19 +38,26 @@ public class TabsPane {
 		//Textbook Tab
 		
 		Tab textbookTab = new Tab("Textbook");
-		textbookTab.setContent(tPane.getTextbookGrid());
+		textbookTab.setContent(tPane.getTextbookPane());
 		
 		//Sain Tab
 		
 		Tab sainTab = new Tab("SAIN");
 		sainTab.setContent(sainPane.getSainGrid());
+		//WhatIfPane
+		
+		Tab whatIfTab = new Tab("What If");
+		whatIfTab.setContent(whatIfPane.getWhatIfPane());
+		
 		
 		Tab loginTab = new Tab("Login");
 		loginTab.setContent(loginPane.getLoginGrid());
 		
 		
 		
-		tabPanes.getTabs().addAll(loginTab,studentTab,facultyTab,courseTab,textbookTab, sainTab);
+		
+		
+		tabPanes.getTabs().addAll(loginTab,studentTab,facultyTab,courseTab,textbookTab, sainTab,whatIfTab);
 		
 		
 		
@@ -58,6 +66,36 @@ public class TabsPane {
 	public TabPane getTabPanes() {
 		return tabPanes;
 	}
+
+	public StudentPane getsPane() {
+		return sPane;
+	}
+
+	public FacultyPane getfPane() {
+		return fPane;
+	}
+
+	public CoursePane getcPane() {
+		return cPane;
+	}
+
+	public TextbookPane gettPane() {
+		return tPane;
+	}
+
+	public SainPane getSainPane() {
+		return sainPane;
+	}
+
+	public LoginPane getLoginPane() {
+		return loginPane;
+	}
+
+	public WhatIfPane getWhatIfPane() {
+		return whatIfPane;
+	}
+	
+	
 	
 	
 	

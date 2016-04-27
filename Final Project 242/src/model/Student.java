@@ -11,18 +11,16 @@ public class Student extends Person {
 	private ArrayList<Course> coursesToGraduate = new ArrayList<>();
 	private int credits;
 	private int id;
-	private int status;
 
-	private static int count;
-
-	public Student(String fname, String lname, String phone, String adress,
+	public Student(String fname, String lname, String phone, String adress, int id,
 			double gpa, String major, int credits, Course courseTaken,
 			Course currentCourses2, Course coursesToGraduate2) {
 		super(fname, lname, phone, adress);
+		this.id = id;
 		this.gpa = gpa;
 		this.major = major;
 		this.credits = credits;
-		setStatus(0);
+
 		coursesTaken.add(courseTaken);
 		currentCourses.add(currentCourses2);
 		coursesToGraduate.add(coursesToGraduate2);
@@ -34,12 +32,14 @@ public class Student extends Person {
 		 */
 	}
 
-	public Student(String fname, String lname, String phone, String adress,
+	public Student(String fname, String lname, String phone, String adress, int id,
 			double gpa, String major, int credits) {
 		super(fname, lname, phone, adress);
+		this.id = id;
 		this.gpa = gpa;
 		this.major = major;
 		this.credits = credits;
+		
 		setStatus(0);
 
 	}
@@ -54,7 +54,7 @@ public class Student extends Person {
 		this.major = student.getMajor();
 		this.credits = student.getCredits();
 
-		setStatus(0);
+		
 
 	}
 
@@ -114,12 +114,20 @@ public class Student extends Person {
 		this.credits = credits;
 	}
 
-	public int getStatus() {
-		return status;
+	@Override
+	public String toString() {
+		return "Student [gpa=" + gpa + ", major=" + major + ", coursesTaken="
+				+ coursesTaken + ", currentCourses=" + currentCourses
+				+ ", coursesToGraduate=" + coursesToGraduate + ", credits="
+				+ credits + ", id=" + id + ", getFname()=" + getFname()
+				+ ", getLname()=" + getLname() + ", getPhone()=" + getPhone()
+				+ ", getAdress()=" + getAdress() + "]";
 	}
+	
+	
 
-	public void setStatus(int status) {
-		this.status = status;
-	}
+	
+
+	
 
 }

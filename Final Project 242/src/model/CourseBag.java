@@ -14,32 +14,10 @@
 	public class CourseBag {
 		private ArrayList<Course> courseList = new ArrayList<>();
 
-		public ArrayList<Course> courseList() {
+		public ArrayList<Course> getCourseList() {
 			return courseList;
 		}
 
-		// IMPORT COURSE FROM TEXTFILE
-		public void load(String filename) {
-			File input = new File(filename);
-			Scanner readFile;
-			try {
-				readFile = new Scanner(input);
-
-				while (readFile.hasNextLine()) {
-					String str = readFile.nextLine();
-					String[] temp = str.split(",");
-					String courseTitle = temp[0];
-					String courseNum = temp[1];
-					String crn = temp[2];
-					String classAdress = temp[3];
-					Course c1 = new Course(courseTitle, courseNum, crn, classAdress);
-					courseList.add(c1);
-				}
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 
 		// SAVE TO BINARY FILE
 

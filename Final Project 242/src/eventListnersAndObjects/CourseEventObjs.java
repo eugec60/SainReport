@@ -9,10 +9,8 @@ public class CourseEventObjs extends EventObject {
 	private String courseTitle;
 	private String courseNum;
 	private String crn;
-	private String textbook;
-	private String faculty;
-	private ArrayList<String> student;
 	private String classAdress;
+	private int credits;
 
 	public CourseEventObjs(Object arg0) {
 		super(arg0);
@@ -20,16 +18,13 @@ public class CourseEventObjs extends EventObject {
 	}
 
 	public CourseEventObjs(Object source, String courseTitle, String courseNum,
-			String crn, String textbook, String faculty,
-			ArrayList<String> student, String classAdress) {
+			String crn, String classAdress,int credits) {
 		super(source);
 		this.courseTitle = courseTitle;
 		this.courseNum = courseNum;
 		this.crn = crn;
-		this.textbook = textbook;
-		this.faculty = faculty;
-		this.student = student;
 		this.classAdress = classAdress;
+		this.credits = credits;
 	}
 
 	public String getCourseTitle() {
@@ -44,21 +39,16 @@ public class CourseEventObjs extends EventObject {
 		return crn;
 	}
 
-	public String getTextbook() {
-		return textbook;
-	}
-
-	public String getFaculty() {
-		return faculty;
-	}
-
-	public ArrayList<String> getStudent() {
-		return student;
-	}
 
 	public String getClassAdress() {
 		return classAdress;
 	}
+
+	public int getCredits() {
+		return credits;
+	}
+	
+	
 	
 	
 

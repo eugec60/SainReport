@@ -12,6 +12,19 @@ public class Major {
 	private List courseRequired = new ArrayList<Course>();
 	
 	
+	public Major(String majorName, List courseRequired) {
+		super();
+		this.majorName = majorName;
+		this.courseRequired = courseRequired;
+	}
+	
+	public void addCourseToMajor(Course course){
+		courseRequired.add(course);
+	}
+	
+	
+	
+	
 	
 
 }

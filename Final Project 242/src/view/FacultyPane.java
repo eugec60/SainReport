@@ -1,5 +1,6 @@
 package view;
 
+import model.Faculty;
 import eventListnersAndObjects.FacultyEventListener;
 import eventListnersAndObjects.FacultyEventObjs;
 import eventListnersAndObjects.TextbookEnterButton;
@@ -8,8 +9,10 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -81,7 +84,7 @@ public class FacultyPane {
 
 		addB.setOnAction(e -> {
 			FacultyEventObjs ev = new FacultyEventObjs(this, fnameT.getText(),
-					lnameT.getText(), addressT.getText(), phoneT.getText(),
+					lnameT.getText(), phoneT.getText(), addressT.getText(),
 					Integer.parseInt(idT.getText()), oAddressT.getText(),
 					titleT.getText(), departmentT.getText(), payScaleT
 							.getText());
@@ -131,12 +134,14 @@ public class FacultyPane {
 			GridPane displayPane = new GridPane();
 			displayPane.setAlignment(Pos.CENTER);
 			Label l1 = new Label("Faculty:");
-
-			facultyDisplayTable = new TableView();
 			displayPane.add(l1, 0, 0);
+			
+
+				
+			
 			displayPane.add(facultyDisplayTable, 0, 1);
 
-			secondaryStage.setScene(new Scene(displayPane, 200, 200));
+			secondaryStage.setScene(new Scene(displayPane, 700, 300));
 			secondaryStage.showAndWait();
 
 		});
@@ -158,6 +163,18 @@ public class FacultyPane {
 	public void setFacultyEventListener(FacultyEventListener facultyEventListener) {
 		this.facultyEventListener = facultyEventListener;
 	}
+
+	public void setFacultyDisplayTable(TableView facultyDisplayTable) {
+		this.facultyDisplayTable = facultyDisplayTable;
+	}
+
+	public TableView getFacultyDisplayTable() {
+		return facultyDisplayTable;
+	}
+	
+	
+	
+	
 	
 	
 

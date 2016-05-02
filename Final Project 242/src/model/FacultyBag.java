@@ -16,7 +16,7 @@ public class FacultyBag {
 	
 	private ArrayList<Faculty> facultyList = new ArrayList<>();
 
-	public ArrayList<Faculty> Faculty() {
+	public ArrayList<Faculty> getFacultyList() {
 		return facultyList;
 	}
 

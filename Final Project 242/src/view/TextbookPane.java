@@ -15,11 +15,11 @@ import eventListnersAndObjects.TextbookEnterButton;
 
 public class TextbookPane {
 
-	TextField titleT, authorT, publisherT, priceT, isbnT, yearT;
-	GridPane textbookPane;
-	Button addB, updateB,displayB;
-	EnterButtonListener enterButtonListener;
-	TableView textbookDisplayTable;
+	private TextField titleT, authorT, publisherT, priceT, isbnT, yearT;
+	private GridPane textbookPane;
+	private Button addB, updateB,displayB;
+	private EnterButtonListener enterButtonListener;
+	private TableView textbookDisplayTable;
 
 	public TextbookPane() {
 

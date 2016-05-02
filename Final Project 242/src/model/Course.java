@@ -6,27 +6,21 @@ public class Course {
 	private String courseTitle;
 	private String courseNum;
 	private String crn;
-	private Textbook textbook;
-	private Faculty faculty;
-	private ArrayList<Student> student;
 	private String classAdress;
+	private int credits;
 	
 	public Course(){
 		
 	}
 	
-	public Course(String courseTitle, String courseNum, String crn,
-			Textbook textbook, Faculty faculty,
-			String classAdress) {
+	public Course(String courseTitle, String courseNum, String crn,String classAdress, int credits) {
 		super();
 		this.courseTitle = courseTitle;
 		this.courseNum = courseNum;
 		this.crn = crn;
-		this.textbook = textbook;
-		this.faculty = faculty;
-		this.student = student;
 		this.classAdress = classAdress;
-		this.student = null;
+		this.credits = credits;
+
 	}
 	
 	public Course(String courseTitle, String courseNum, String crn,
@@ -36,20 +30,10 @@ public class Course {
 		this.courseTitle = courseTitle;
 		this.courseNum = courseNum;
 		this.crn = crn;
-		this.textbook = textbook;
-		this.faculty = faculty;
-		this.student = student;
 		this.classAdress = classAdress;
 	}
 	
-	public Course(String courseTitle, String courseNum, String crn,
-			String classAdress) {
-		super();
-		this.courseTitle = courseTitle;
-		this.courseNum = courseNum;
-		this.crn = crn;		
-		this.classAdress = classAdress;
-	}
+	
 	
 	public Course(Course course) {
 		this.courseTitle = course.getCourseTitle();
@@ -92,33 +76,6 @@ public class Course {
 
 
 
-	public Faculty getFaculty() {
-		return faculty;
-	}
-
-
-	public void setFaculty(Faculty faculty) {
-		this.faculty = faculty;
-	}
-
-
-
-	public Textbook getTextbook() {
-		return textbook;
-	}
-
-	public void setTextbook(Textbook textbook) {
-		this.textbook = textbook;
-	}
-
-	public ArrayList<Student> getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student2) {
-		student.add(student2);
-	}
-
 	public String getClassAdress() {
 		return classAdress;
 	}
@@ -127,13 +84,21 @@ public class Course {
 	public void setClassAdress(String classAdress) {
 		this.classAdress = classAdress;
 	}
+	
+	
+
+	public int getCredits() {
+		return credits;
+	}
+
+	public void setCredits(int credits) {
+		this.credits = credits;
+	}
 
 	@Override
 	public String toString() {
 		return "Course [Course Title: " + courseTitle + ", Course Num: "
-				+ courseNum + ", CRN: " + crn + ", Textbook: " + textbook
-				+ ", Faculty: " + faculty + ", Student: " + student
-				+ ", Class Adress: =" + classAdress + "]\n";
+				+ courseNum + ", CRN: " + crn + ", Class Adress: =" + classAdress + "]\n";
 	}
 
 }

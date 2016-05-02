@@ -1,6 +1,5 @@
 package view;
 
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -21,7 +20,7 @@ public class StudentPane {
 	private Button addB, searchB, updateB, displayB;
 	private StudentEventListener studentEventListener;
 	private TableView studentDisplayTable;
-	private ObservableList studentOList;
+	
 
 	public StudentPane() {
 
@@ -158,11 +157,10 @@ public class StudentPane {
 			displayPane.setAlignment(Pos.CENTER);
 			Label l1 = new Label("Students:");
 
-			studentDisplayTable = new TableView();
 			displayPane.add(l1, 0, 0);
 			displayPane.add(studentDisplayTable, 0, 1);
 
-			secondaryStage.setScene(new Scene(displayPane, 200, 200));
+			secondaryStage.setScene(new Scene(displayPane, 700, 350));
 			secondaryStage.showAndWait();
 
 		});
@@ -206,6 +204,14 @@ public class StudentPane {
 
 	public TextField getCreditsT() {
 		return creditsT;
+	}
+	
+	
+
+	
+
+	public void setStudentDisplayTable(TableView studentDisplayTable) {
+		this.studentDisplayTable = studentDisplayTable;
 	}
 
 	public void setStudentEventListener(StudentEventListener studentEventListener) {

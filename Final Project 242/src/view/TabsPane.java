@@ -13,6 +13,7 @@ public class TabsPane {
 	SainPane sainPane = new SainPane();
 	LoginPane loginPane = new LoginPane();
 	WhatIfPane whatIfPane = new WhatIfPane();
+	MajorPane majorPane = new MajorPane();
 
 	public TabsPane() {
 		
@@ -53,11 +54,14 @@ public class TabsPane {
 		Tab loginTab = new Tab("Login");
 		loginTab.setContent(loginPane.getLoginGrid());
 		
+		Tab majorTab = new Tab("Major");
+		majorTab.setContent(majorPane.getMajorGrid());
 		
 		
 		
 		
-		tabPanes.getTabs().addAll(loginTab,studentTab,facultyTab,courseTab,textbookTab, sainTab,whatIfTab);
+		
+		tabPanes.getTabs().addAll(loginTab,studentTab,facultyTab,courseTab,textbookTab, sainTab,whatIfTab,majorTab);
 		
 		
 		
@@ -94,6 +98,11 @@ public class TabsPane {
 	public WhatIfPane getWhatIfPane() {
 		return whatIfPane;
 	}
+
+	public MajorPane getMajorPane() {
+		return majorPane;
+	}
+	
 	
 	
 	

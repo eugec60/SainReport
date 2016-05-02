@@ -4,9 +4,9 @@ public class Person {
 	
 	private String fname;
 	private String lname;
-	private int id;
 	private String phone;
 	private String adress;
+	private int id;
 	private int status;
 
 	private static int count;

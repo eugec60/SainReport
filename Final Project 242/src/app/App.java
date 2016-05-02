@@ -3,8 +3,7 @@ package app;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import view.MainWindow;
-import controller.StudentController;
-import controller.TextbookController;
+import controller.Controller;
 
 public class App extends Application {
 
@@ -16,8 +15,8 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		MainWindow mainWindow = new MainWindow(primaryStage);
-		TextbookController controller = new TextbookController(mainWindow);
-		StudentController sController = new StudentController(mainWindow );
+		Controller controller = new Controller(mainWindow);
+		
 	}
 
 }

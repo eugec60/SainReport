@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Student extends Person {
+public class Student extends Person implements Serializable {
 
 	private double gpa;
 	private String major;
@@ -10,13 +11,13 @@ public class Student extends Person {
 	private ArrayList<Course> currentCourses = new ArrayList<>();
 	private ArrayList<Course> coursesToGraduate = new ArrayList<>();
 	private int credits;
-	private int id;
+	
 
 	public Student(String fname, String lname, String phone, String adress, int id,
 			double gpa, String major, int credits, Course courseTaken,
 			Course currentCourses2, Course coursesToGraduate2) {
 		super(fname, lname, phone, adress);
-		this.id = id;
+		
 		this.gpa = gpa;
 		this.major = major;
 		this.credits = credits;
@@ -35,7 +36,7 @@ public class Student extends Person {
 	public Student(String fname, String lname, String phone, String adress, int id,
 			double gpa, String major, int credits) {
 		super(fname, lname, phone, adress);
-		this.id = id;
+		
 		this.gpa = gpa;
 		this.major = major;
 		this.credits = credits;
@@ -119,7 +120,7 @@ public class Student extends Person {
 		return "Student [gpa=" + gpa + ", major=" + major + ", coursesTaken="
 				+ coursesTaken + ", currentCourses=" + currentCourses
 				+ ", coursesToGraduate=" + coursesToGraduate + ", credits="
-				+ credits + ", id=" + id + ", getFname()=" + getFname()
+				+ credits + ", getFname()=" + getFname()
 				+ ", getLname()=" + getLname() + ", getPhone()=" + getPhone()
 				+ ", getAdress()=" + getAdress() + "]";
 	}

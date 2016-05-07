@@ -39,11 +39,7 @@ public class Faculty extends Person implements Serializable {
 		this.payScale = faculty.getPayScale();
 
 		setStatus(1);
-		//count++;
-		//this.id=count;
-	
-		//Person.setCount(Person.getCount()+1);
-		//this.id = Person.getCount();
+		
 		
 	}
 	
@@ -85,15 +81,18 @@ public class Faculty extends Person implements Serializable {
 		this.payScale = payScale;
 	}
 
+	
+	
 	@Override
 	public String toString() {
-		return "Faculty [" + "First Name: " + getFname() + ", Last Name: " + getLname()
-				+ ", ID: " + getId() + ", Phone Number: " + getPhone()
-				+ ", Address: " + getAdress() + "Office Address" + officeAdress + ", Title: " + title
-				+ ", Department: " + department + ", Pay Scale: " + payScale
-				+ "]\n";
+		return "Faculty [officeAdress=" + officeAdress + ", title=" + title
+				+ ", department=" + department + ", payScale=" + payScale
+				+ ", id=" + id + ", status=" + status + ", getFname()="
+				+ getFname() + ", getLname()=" + getLname() + ", getId()="
+				+ getId() + ", getPhone()=" + getPhone() + ", getAdress()="
+				+ getAdress() + "]";
 	}
-	
+
 	public String toString2(){
 		return getLname();
 	}

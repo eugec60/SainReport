@@ -33,6 +33,11 @@ public class StudentEventObjs extends EventObject {
 		this.major = major;
 		this.credits = credits;
 	}
+	
+	public StudentEventObjs(Object source, int id) {
+		super(source);
+		this.id = id;
+	}
 
 	public String getFname() {
 		return fname;

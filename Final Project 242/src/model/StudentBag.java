@@ -9,10 +9,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class StudentBag {
+public class StudentBag implements Serializable {
 
 	private ArrayList<Student> studentList = new ArrayList<>();
 
@@ -106,6 +107,19 @@ public class StudentBag {
 
 			if (studentList.get(i).getId() == id) {
 				return (Student) studentList.get(i);
+			}
+
+		}
+		return null;
+
+	}
+	
+	public Student findStudent(String name) {
+
+		for (int i = 0; i < studentList.size(); i++) {
+
+			if (studentList.get(i).getFname().equals(name)) {
+				return  studentList.get(i);
 			}
 
 		}

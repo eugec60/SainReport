@@ -14,54 +14,58 @@ public class TabsPane {
 	LoginPane loginPane = new LoginPane();
 	WhatIfPane whatIfPane = new WhatIfPane();
 	MajorPane majorPane = new MajorPane();
-
+	FindStudentPane findStudentPane = new FindStudentPane();
+	Tab loginTab,studentTab,facultyTab,courseTab,textbookTab, sainTab,whatIfTab,majorTab,findStudentTab;
 	public TabsPane() {
 		
 		//STUDENT TAB
 		tabPanes = new TabPane();
 		tabPanes.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
-		Tab studentTab = new Tab("Student");
+		 studentTab = new Tab("Student");
 		studentTab.setContent(sPane.getStudentPane());
 		
 		//FacultyTab
 		
 		
-		Tab facultyTab = new Tab("Faculty");
+		 facultyTab = new Tab("Faculty");
 		facultyTab.setContent(fPane.getFacultyPane());
 		
 		//Course Tab
 		
-		Tab courseTab = new Tab("Course");
+		 courseTab = new Tab("Course");
 		courseTab.setContent(cPane.getCoursePane());
 		
 		
 		
 		//Textbook Tab
 		
-		Tab textbookTab = new Tab("Textbook");
+		 textbookTab = new Tab("Textbook");
 		textbookTab.setContent(tPane.getTextbookPane());
 		
 		//Sain Tab
 		
-		Tab sainTab = new Tab("SAIN");
+		 sainTab = new Tab("SAIN");
 		sainTab.setContent(sainPane.getSainGrid());
 		//WhatIfPane
 		
-		Tab whatIfTab = new Tab("What If");
+		 whatIfTab = new Tab("What If");
 		whatIfTab.setContent(whatIfPane.getWhatIfPane());
 		
 		
-		Tab loginTab = new Tab("Login");
+		loginTab = new Tab("Login");
 		loginTab.setContent(loginPane.getLoginGrid());
 		
-		Tab majorTab = new Tab("Major");
+		 majorTab = new Tab("Major");
 		majorTab.setContent(majorPane.getMajorGrid());
 		
+		findStudentTab = new Tab("Find Student");
+		findStudentTab.setContent(findStudentPane.getFindStudentGrid());
 		
 		
 		
 		
-		tabPanes.getTabs().addAll(loginTab,studentTab,facultyTab,courseTab,textbookTab, sainTab,whatIfTab,majorTab);
+		
+		tabPanes.getTabs().addAll(loginTab);
 		
 		
 		
@@ -102,6 +106,52 @@ public class TabsPane {
 	public MajorPane getMajorPane() {
 		return majorPane;
 	}
+	
+	
+
+	public FindStudentPane getFindStudentPane() {
+		return findStudentPane;
+	}
+
+	public Tab getLoginTab() {
+		return loginTab;
+	}
+
+	public Tab getStudentTab() {
+		return studentTab;
+	}
+
+	public Tab getFacultyTab() {
+		return facultyTab;
+	}
+
+	public Tab getCourseTab() {
+		return courseTab;
+	}
+
+	public Tab getTextbookTab() {
+		return textbookTab;
+	}
+
+	public Tab getSainTab() {
+		return sainTab;
+	}
+
+	public Tab getWhatIfTab() {
+		return whatIfTab;
+	}
+
+	public Tab getMajorTab() {
+		return majorTab;
+	}
+
+	public Tab getFindStudentTab() {
+		return findStudentTab;
+	}
+	
+	
+	
+	
 	
 	
 	

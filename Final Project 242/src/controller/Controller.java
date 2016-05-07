@@ -1,15 +1,10 @@
 package controller;
 
-import eventListnersAndObjects.CourseEventListener;
-import eventListnersAndObjects.CourseEventObjs;
-import eventListnersAndObjects.FacultyEventListener;
-import eventListnersAndObjects.FacultyEventObjs;
-import eventListnersAndObjects.MajorEventListener;
-import eventListnersAndObjects.MajorEventObj;
-import eventListnersAndObjects.StudentEventListener;
-import eventListnersAndObjects.StudentEventObjs;
+import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -22,6 +17,14 @@ import model.MajorBag;
 import model.Student;
 import model.StudentBag;
 import view.MainWindow;
+import eventListnersAndObjects.CourseEventListener;
+import eventListnersAndObjects.CourseEventObjs;
+import eventListnersAndObjects.FacultyEventListener;
+import eventListnersAndObjects.FacultyEventObjs;
+import eventListnersAndObjects.LoginEventListener;
+import eventListnersAndObjects.LoginEventObj;
+import eventListnersAndObjects.StudentEventListener;
+import eventListnersAndObjects.StudentEventObjs;
 
 public class Controller {
 
@@ -32,29 +35,42 @@ public class Controller {
 	ObservableList courseData, majorData, studentData, facultyData;
 
 	public Controller(MainWindow mainWindow) {
+		
+
 		cb = new CourseBag();
 		mb = new MajorBag();
 		sb = new StudentBag();
 		fb = new FacultyBag();
 		
+		
+		
+		load();
+//		Faculty f1 = new Faculty("caio", "caio","caio", "caio", "caio", "caio", "caio", "caio");
+//		Faculty f2 = new Faculty("JOHN", "JOHN","JOHN", "JOHN", "JOHN", "JOHN", "JOHN", "JOHN");
+//		fb.add(f1);
+//		fb.add(f2);
+		System.out.println(fb.getFacultyList().get(1));
+
 		courseData = FXCollections.observableArrayList(cb.getCourseList());
 		majorData = FXCollections.observableArrayList(cb.getCourseList());
 		studentData = FXCollections.observableArrayList(sb.getStudentList());
 		facultyData = FXCollections.observableArrayList(fb.getFacultyList());
-		
-		
-	
-		
+
 		mainWindow.getTabsPane().getfPane()
 				.setFacultyDisplayTable(buildFacultyTable());
-		mainWindow.getTabsPane().getMajorPane().setCourseDisplayTable(buildCourseTableView());
+		mainWindow.getTabsPane().getMajorPane()
+				.setCourseDisplayTable(buildCourseTableView());
 		mainWindow.getTabsPane().getsPane()
 				.setStudentDisplayTable(buildStudentTable());
-		mainWindow.getTabsPane().getcPane().setCourseDisplayTable(buildCourseTableView());
+		mainWindow.getTabsPane().getcPane()
+				.setCourseDisplayTable(buildCourseTableView());
 
+		login(mainWindow);
 		facultyAddB(mainWindow);
 		studentAddB(mainWindow);
 		courseAddB(mainWindow);
+		findStudent(mainWindow);
+		save(mainWindow);
 	}
 
 	// STUDENT TABLE VIEW
@@ -193,8 +209,6 @@ public class Controller {
 				addressCol, creditsCol);
 
 		facultyDisplayTable.setItems(courseData);
-		
-		
 
 		return facultyDisplayTable;
 
@@ -212,7 +226,9 @@ public class Controller {
 								.getLname(), ev.getPhone(), ev.getAdress(), ev
 								.getOfficeAdress(), ev.getTitle(), ev
 								.getDepartment(), ev.getPayScale());
-
+						
+						fb.getFacultyList().add(faculty);
+						
 						facultyData.add(faculty);
 					}
 				});
@@ -230,43 +246,138 @@ public class Controller {
 								.getLname(), ev.getAdress(), ev.getPhone(), ev
 								.getId(), ev.getGpa(), ev.getMajor(), ev
 								.getCredits());
-
+						sb.add(student);
 						studentData.add(student);
 
 					}
 				});
 
 	}
+
+	// Course Add Button
+
+	public void courseAddB(MainWindow mainWindow) {
+
+		mainWindow.getTabsPane().getcPane()
+				.setCourseEventListener(new CourseEventListener() {
+
+					@SuppressWarnings("unchecked")
+					@Override
+					public void ButtonClicked(CourseEventObjs ev) {
+						Course course = new Course(ev.getCourseTitle(), ev
+								.getCourseNum(), ev.getCrn(), ev
+								.getClassAdress(), ev.getCredits());
+						cb.getCourseList().add(course);
+						courseData.add(course);
+
+					}
+				});
+
+	}
+
+	// public void majorAddB(MainWindow mainWindow){
+	//
+	// mainWindow.getTabsPane().getMajorPane().setMajorEventListerner(new
+	// MajorEventListener(){
+	//
+	// @Override
+	// public void ButtonClicked(MajorEventObj ev) {
+	// //String Crn = ev.getCrn();
+	//
+	// }
+	//
+	// });
+	// }
+
+	public void login(MainWindow mainWindow) {
+
+		mainWindow.getTabsPane().getLoginPane()
+				.setLoginEventListener(new LoginEventListener() {
+
+					@Override
+					public void ButtonClicked(LoginEventObj ev) {
+						Student s1 = new Student("password", "password", "password", "password", 0, 0, "password", 0);
+						sb.add(s1);
+						Faculty f1 = new Faculty("Admin", "Admin", "password", "password","password", null, null, null);
+						fb.add(f1);
+						String name = ev.getName();
+						String password = ev.getPassword();
+						if (name.equals("Admin") && password.equals("Password")) {
+							mainWindow.getTabsPane().getTabPanes().getTabs().remove(0);
+							mainWindow.getTabsPane().getTabPanes().getTabs().addAll(mainWindow.getTabsPane().getCourseTab());
+							mainWindow.getTabsPane().getTabPanes().getTabs().addAll(mainWindow.getTabsPane().getStudentTab());
+							mainWindow.getTabsPane().getTabPanes().getTabs().addAll(mainWindow.getTabsPane().getFacultyTab());
+							mainWindow.getTabsPane().getTabPanes().getTabs().addAll(mainWindow.getTabsPane().getMajorTab());
+							mainWindow.getTabsPane().getTabPanes().getTabs().addAll(mainWindow.getTabsPane().getFindStudentTab());
+						} else if(sb.findStudent(name) != null){
+							
+							mainWindow.getTabsPane().getTabPanes().getTabs().remove(0);
+							mainWindow.getTabsPane().getTabPanes().getTabs().addAll(mainWindow.getTabsPane().getSainTab());
+							mainWindow.getTabsPane().getTabPanes().getTabs().addAll(mainWindow.getTabsPane().getWhatIfTab());
+						} else if(fb.findFacutly(name) != null){
+							mainWindow.getTabsPane().getTabPanes().getTabs().remove(0);
+							mainWindow.getTabsPane().getTabPanes().getTabs().addAll(mainWindow.getTabsPane().getFacultyTab());
+						}
+					}
+
+				});
+
+	}
 	
-	//Course Add Button
-	
-	public void courseAddB(MainWindow mainWindow){
+	public void findStudent(MainWindow mainWindow) {
 		
-		mainWindow.getTabsPane().getcPane().setCourseEventListener(new CourseEventListener() {
+		mainWindow.getTabsPane().getFindStudentPane().setStudentDisplayTable(buildStudentTable());
+		mainWindow.getTabsPane().getFindStudentPane().setStudentEventListener(new StudentEventListener() {
 
 			@SuppressWarnings("unchecked")
 			@Override
-			public void ButtonClicked(CourseEventObjs ev) {
-				Course course = new Course(ev.getCourseTitle(), ev
-						.getCourseNum(), ev.getCrn(), ev
-						.getClassAdress(), ev.getCredits());
-				courseData.add(course);
+			public void buttonClicked(StudentEventObjs ev) {
+				int id = ev.getId();
+				System.out.println(id);
+
+				Student s1 =sb.find(id);
+				ArrayList<Student> tempStu = new ArrayList<>();
+				tempStu.add(s1);
+				
+				ObservableList<Student> tempStuO = FXCollections.observableArrayList(tempStu);
+				mainWindow.getTabsPane().getFindStudentPane().getStudentDisplayTable().setItems(tempStuO);
+				
 
 			}
 		});
 		
+		
 	}
 	
-	public void majorAddB(MainWindow mainWindow){
+	public void save(MainWindow mainWindow) {
 		
-		mainWindow.getTabsPane().getMajorPane().setMajorEventListerner(new MajorEventListener(){
+		mainWindow.getMenu().setLoginEventListener(new LoginEventListener(){
 
 			@Override
-			public void ButtonClicked(MajorEventObj ev) {
-				//String Crn = ev.getCrn();
+			public void ButtonClicked(LoginEventObj ev) {
+				fb.saveID();
+				sb.save();
+				fb.save();
+				cb.save();
+				
+				
 				
 			}
 			
-		}); 		
+		});
+		
+				
+		
 	}
+	
+	public void load() {
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaa");
+		fb.readID();
+		sb.read();
+		fb.read();
+		cb.read();
+		
+		
+	}
+	
 }

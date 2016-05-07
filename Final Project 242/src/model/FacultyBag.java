@@ -9,10 +9,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class FacultyBag {
+public class FacultyBag  {
 	
 	private ArrayList<Faculty> facultyList = new ArrayList<>();
 
@@ -25,7 +26,7 @@ public class FacultyBag {
 	public void save() {
 		FileOutputStream fos;
 		try {
-			fos = new FileOutputStream("studentData.dat");
+			fos = new FileOutputStream("facultyData.dat");
 
 			ObjectOutputStream oos;
 			try {
@@ -48,7 +49,7 @@ public class FacultyBag {
 	public void read() {
 		FileInputStream fis;
 		try {
-			fis = new FileInputStream("studentData.dat");
+			fis = new FileInputStream("facultyData.dat");
 
 			ObjectInputStream ois;
 			try {
@@ -71,36 +72,7 @@ public class FacultyBag {
 		}
 	}
 
-	// IMPORT FROM TEXT FILE
-	public void load(String filename) {
-		File input = new File(filename);
-		Scanner readFile;
-		try {
-			readFile = new Scanner(input);
-
-			while (readFile.hasNextLine()) {
-				String str = readFile.nextLine();
-				String[] stuff = str.split(",");
-				int status = Integer.parseInt(stuff[0]);
-				String fname = stuff[1];
-				String lname = stuff[2];
-				String phone = stuff[3];
-				String adress = stuff[4];
-				String officeAdress = stuff[5];
-				String title = stuff[6];
-				String department = stuff[7];
-				String payScale = stuff[8];
-
-				Faculty f1 = new Faculty(fname, lname, phone, adress,
-						officeAdress, title, department, payScale);
-				facultyList.add(f1);
-
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	
 
 	// DISPLAY METHOD
 	public void display() {
@@ -129,12 +101,12 @@ public class FacultyBag {
 	}
 
 	// FIND Faculty METHOD
-	public Faculty findStudent(int id) {
+	public Faculty findFacutly(String name) {
 
 		for (int i = 0; i < facultyList.size(); i++) {
 
-			if (facultyList.get(i).getId() == id) {
-				return (Faculty) facultyList.get(i);
+			if (facultyList.get(i).getFname().equals( name)) {
+				return  facultyList.get(i);
 			}
 
 		}
@@ -174,7 +146,7 @@ public class FacultyBag {
 
 			int a = dis.readInt();
 
-			Faculty.setCount(a);
+			Person.setCount(a);
 
 			dis.close();
 		} catch (IOException e) {
@@ -188,7 +160,7 @@ public class FacultyBag {
 		try {
 			DataOutputStream os = new DataOutputStream(new FileOutputStream(
 					"count.dat"));
-			os.writeInt(Faculty.getCount());
+			os.writeInt(Person.getCount());
 			os.close();
 
 		} catch (IOException e) {

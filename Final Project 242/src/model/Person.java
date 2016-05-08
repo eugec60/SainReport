@@ -8,6 +8,8 @@ public class Person implements Serializable {
 	private String lname;
 	private String phone;
 	private String adress;
+	private String username;
+	private String password;
 	private int id;
 	private int status;
 
@@ -19,12 +21,14 @@ public class Person implements Serializable {
 
 	}
 
-	public Person(String fname, String lname, String phone, String adress) {
+	public Person(String fname, String lname, String phone, String adress,String username,String password) {
 		super();
 		this.fname = fname;
 		this.lname = lname;
 		this.phone = phone;
 		this.adress = adress;
+		this.username = username;
+		this.password = password;
 		count++;
 		this.id = count;
 
@@ -82,12 +86,34 @@ public class Person implements Serializable {
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
+	
+	
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	@Override
 	public String toString() {
-		return "Person [First Name=" + fname + ", Last Name=" + lname + ",Id="
-				+ id + ", Phone=" + phone + ", Adress=" + adress + "]";
+		return "Person [fname=" + fname + ", lname=" + lname + ", phone="
+				+ phone + ", adress=" + adress + ", username=" + username
+				+ ", password=" + password + ", id=" + id + ", status="
+				+ status + "]";
 	}
+
+	
 	
 	
 

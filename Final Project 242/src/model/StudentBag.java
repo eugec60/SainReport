@@ -101,7 +101,7 @@ public class StudentBag implements Serializable {
 	}
 
 	// FIND STUDENT METHOD
-	public Student findStudent(int id) {
+	public Student findStudent( int id) {
 
 		for (int i = 0; i < studentList.size(); i++) {
 
@@ -114,11 +114,11 @@ public class StudentBag implements Serializable {
 
 	}
 	
-	public Student findStudent(String name) {
+	public Student findStudent(String username, String password) {
 
 		for (int i = 0; i < studentList.size(); i++) {
 
-			if (studentList.get(i).getFname().equals(name)) {
+			if (studentList.get(i).getUsername().equals(username) && studentList.get(i).getPassword().equals(password)) {
 				return  studentList.get(i);
 			}
 
@@ -127,18 +127,7 @@ public class StudentBag implements Serializable {
 
 	}
 
-	public Student findStudentLN(String lastName) {
 
-		for (int i = 0; i < studentList.size(); i++) {
-
-			if (studentList.get(i).getLname().equals(lastName)) {
-				return (Student) studentList.get(i);
-			}
-
-		}
-		return null;
-
-	}
 
 	// DELETE METHOD
 	public void remove(int id) {

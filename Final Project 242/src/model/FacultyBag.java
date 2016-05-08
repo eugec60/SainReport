@@ -101,11 +101,11 @@ public class FacultyBag  {
 	}
 
 	// FIND Faculty METHOD
-	public Faculty findFacutly(String name) {
+	public Faculty findFacutly(String username, String password) {
 
 		for (int i = 0; i < facultyList.size(); i++) {
 
-			if (facultyList.get(i).getFname().equals( name)) {
+			if (facultyList.get(i).getUsername().equals(username)&& facultyList.get(i).getPassword().equals(password)) {
 				return  facultyList.get(i);
 			}
 
@@ -114,18 +114,7 @@ public class FacultyBag  {
 
 	}
 
-	public Faculty findStudentLN(String lastName) {
-
-		for (int i = 0; i < facultyList.size(); i++) {
-
-			if (facultyList.get(i).getLname().equals(lastName)) {
-				return (Faculty) facultyList.get(i);
-			}
-
-		}
-		return null;
-
-	}
+	
 
 	// DELETE METHOD
 	public void remove(int id) {

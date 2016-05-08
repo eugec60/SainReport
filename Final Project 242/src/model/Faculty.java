@@ -12,10 +12,10 @@ public class Faculty extends Person implements Serializable {
 
 	private static int count;
 
-	public Faculty(String fname, String lname, String phone, String adress,
+	public Faculty(String fname, String lname, String phone, String adress,String username, String password,
 			String officeAdress, String title, String department,
 			String payScale) {
-		super(fname, lname, phone, adress);
+		super(fname, lname, phone, adress,username,password);
 		this.officeAdress = officeAdress;
 		this.title = title;
 		this.department = department;

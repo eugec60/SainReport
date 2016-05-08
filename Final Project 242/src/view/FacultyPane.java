@@ -3,7 +3,7 @@ package view;
 import model.Faculty;
 import eventListnersAndObjects.FacultyEventListener;
 import eventListnersAndObjects.FacultyEventObjs;
-import eventListnersAndObjects.TextbookEnterButton;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 
 public class FacultyPane {
 
-	private TextField fnameT, lnameT, addressT, phoneT,idT, oAddressT, titleT,
+	private TextField fnameT, lnameT, addressT, phoneT,usernameT,passwordT, oAddressT, titleT,
 			departmentT, payScaleT;
 	private GridPane facultyPane;
 	private Button addB, updateB, displayB;
@@ -53,30 +53,37 @@ public class FacultyPane {
 		facultyPane.add(phoneL, 3, 2);
 		facultyPane.add(phoneT, 3, 3);
 		
-		Label idL = new Label("Id");
-		idT = new TextField();
-		facultyPane.add(idL, 0, 5);
-		facultyPane.add(idT, 0, 6);
+		Label usernameL = new Label("Username");
+		usernameT = new TextField();
+		facultyPane.add(usernameL, 0, 5);
+		facultyPane.add(usernameT, 0, 6);
+		
+		Label passwordL = new Label("Password");
+		passwordT = new TextField();
+		facultyPane.add(passwordL, 1, 5);
+		facultyPane.add(passwordT, 1, 6);
+		
+		
 
 		Label oAddressL = new Label("Office Adress");
 		oAddressT = new TextField("2");
-		facultyPane.add(oAddressL, 1, 5);
-		facultyPane.add(oAddressT, 1, 6);
+		facultyPane.add(oAddressL, 2, 5);
+		facultyPane.add(oAddressT, 2, 6);
 
 		Label titleL = new Label("Title");
 		titleT = new TextField();
-		facultyPane.add(titleL, 2, 5);
-		facultyPane.add(titleT, 2, 6);
+		facultyPane.add(titleL, 3, 5);
+		facultyPane.add(titleT, 3, 6);
 
 		Label departmentL = new Label("Department");
 		departmentT = new TextField();
-		facultyPane.add(departmentL, 3, 5);
-		facultyPane.add(departmentT, 3, 6);
+		facultyPane.add(departmentL, 0, 8);
+		facultyPane.add(departmentT, 0, 9);
 
 		Label payScaleL = new Label("Pay Scale");
 		payScaleT = new TextField("2");
-		facultyPane.add(payScaleL, 0, 8);
-		facultyPane.add(payScaleT, 0, 9);
+		facultyPane.add(payScaleL, 1, 8);
+		facultyPane.add(payScaleT, 1, 9);
 
 		// ADD BUTTON
 		addB = new Button("Add");
@@ -85,7 +92,7 @@ public class FacultyPane {
 		addB.setOnAction(e -> {
 			FacultyEventObjs ev = new FacultyEventObjs(this, fnameT.getText(),
 					lnameT.getText(), phoneT.getText(), addressT.getText(),
-					Integer.parseInt(idT.getText()), oAddressT.getText(),
+					usernameT.getText(),passwordT.getText(), oAddressT.getText(),
 					titleT.getText(), departmentT.getText(), payScaleT
 							.getText());
 			if (facultyEventListener != null) {
@@ -171,6 +178,8 @@ public class FacultyPane {
 	public TableView getFacultyDisplayTable() {
 		return facultyDisplayTable;
 	}
+	
+	
 	
 	
 	

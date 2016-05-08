@@ -11,6 +11,8 @@ public class StudentEventObjs extends EventObject {
 	private String lname;
 	private String phone;
 	private String adress;
+	private String username;
+	private String password;
 	private int id;
 	private double gpa;
 	private String major;
@@ -21,14 +23,15 @@ public class StudentEventObjs extends EventObject {
 	}
 
 	public StudentEventObjs(Object source, String fname, String lname,
-			String phone, String adress, int id, double gpa, String major,
+			String phone, String adress,String username,String password, double gpa, String major,
 			int credits) {
 		super(source);
 		this.fname = fname;
 		this.lname = lname;
 		this.phone = phone;
 		this.adress = adress;
-		this.id = id;
+		this.username = username;
+		this.password = password;
 		this.gpa = gpa;
 		this.major = major;
 		this.credits = credits;
@@ -70,6 +73,16 @@ public class StudentEventObjs extends EventObject {
 	public int getCredits() {
 		return credits;
 	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+	
+	
 	
 	
 

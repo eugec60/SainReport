@@ -6,9 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MajorBag {
+public class MajorBag implements Serializable{
 	ArrayList<Major> majorList = new ArrayList<>();
 
 	public ArrayList<Major> getMajorList() {
@@ -40,7 +41,7 @@ public class MajorBag {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("File is finished writing to the hard drive");
+		System.out.println("Major bag File is finished writing to the hard drive");
 	}
 
 	// READ FROM BINARY FILE
@@ -68,6 +69,8 @@ public class MajorBag {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		System.out.println("Major bag is read");
 	}
 
 }

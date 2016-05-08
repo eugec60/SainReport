@@ -3,8 +3,6 @@ package eventListnersAndObjects;
 import java.util.ArrayList;
 import java.util.EventObject;
 
-
-
 public class CourseEventObjs extends EventObject {
 	private String courseTitle;
 	private String courseNum;
@@ -17,8 +15,13 @@ public class CourseEventObjs extends EventObject {
 		// TODO Auto-generated constructor stub
 	}
 
+	public CourseEventObjs(Object arg0, String courseTitle) {
+		super(arg0);
+		this.courseTitle = courseTitle;
+	}
+
 	public CourseEventObjs(Object source, String courseTitle, String courseNum,
-			String crn, String classAdress,int credits) {
+			String crn, String classAdress, int credits) {
 		super(source);
 		this.courseTitle = courseTitle;
 		this.courseNum = courseNum;
@@ -39,7 +42,6 @@ public class CourseEventObjs extends EventObject {
 		return crn;
 	}
 
-
 	public String getClassAdress() {
 		return classAdress;
 	}
@@ -47,9 +49,5 @@ public class CourseEventObjs extends EventObject {
 	public int getCredits() {
 		return credits;
 	}
-	
-	
-	
-	
 
 }

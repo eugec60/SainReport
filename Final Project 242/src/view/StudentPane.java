@@ -1,9 +1,12 @@
 package view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -14,15 +17,19 @@ import eventListnersAndObjects.StudentEventObjs;
 
 public class StudentPane {
 
-	private TextField fnameT, lnameT, addressT, phoneT, idT, gpaT, majorT,
+	private TextField fnameT, lnameT, addressT, phoneT,usernameT,passwordT, gpaT, 
 			creditsT;
+	private ComboBox<String> majorCombo;
 	private GridPane studentPane;
+	private TableView studentDisplayTable;
+	private ObservableList majorIdOList;
 	private Button addB, searchB, updateB, displayB;
 	private StudentEventListener studentEventListener;
-	private TableView studentDisplayTable;
+	
 	
 
 	public StudentPane() {
+		
 
 		studentPane = new GridPane();
 		studentPane.setHgap(10);
@@ -49,25 +56,30 @@ public class StudentPane {
 		studentPane.add(phoneL, 3, 2);
 		studentPane.add(phoneT, 3, 3);
 
-		Label idL = new Label("Id");
-		idT = new TextField();
-		studentPane.add(idL, 0, 5);
-		studentPane.add(idT, 0, 6);
+		Label usernameL = new Label("Username");
+		usernameT = new TextField();
+		studentPane.add(usernameL, 0, 5);
+		studentPane.add(usernameT, 0, 6);
+		
+		Label passwordL = new Label("Password");
+		passwordT = new TextField();
+		studentPane.add(passwordL, 1, 5);
+		studentPane.add(passwordT, 1, 6);
 
 		Label gpaL = new Label("Gpa");
 		gpaT = new TextField("2");
-		studentPane.add(gpaL, 1, 5);
-		studentPane.add(gpaT, 1, 6);
+		studentPane.add(gpaL, 2, 5);
+		studentPane.add(gpaT, 2, 6);
 
 		Label majorL = new Label("Major");
-		majorT = new TextField();
-		studentPane.add(majorL, 2, 5);
-		studentPane.add(majorT, 2, 6);
+		majorCombo = new ComboBox<String>();
+		studentPane.add(majorL, 3, 5);
+		studentPane.add(majorCombo, 3, 6);
 
 		Label creditsL = new Label("Credits:");
 		creditsT = new TextField("2");
-		studentPane.add(creditsL, 3, 5);
-		studentPane.add(creditsT, 3, 6);
+		studentPane.add(creditsL, 0, 8);
+		studentPane.add(creditsT, 0, 9);
 
 		// ADD BUTTON
 		addB = new Button("Add");
@@ -75,9 +87,8 @@ public class StudentPane {
 
 		addB.setOnAction(e -> {
 			StudentEventObjs ev = new StudentEventObjs(this, fnameT.getText(),
-					lnameT.getText(), addressT.getText(), phoneT.getText(),
-					Integer.parseInt(idT.getText()), Double.parseDouble(gpaT.getText()),
-					majorT.getText(), Integer.parseInt(creditsT.getText()));
+					lnameT.getText(), addressT.getText(), phoneT.getText(),usernameT.getText(),passwordT.getText(), Double.parseDouble(gpaT.getText()),
+					(String) majorCombo.getSelectionModel().getSelectedItem(), Integer.parseInt(creditsT.getText()));
 			if (studentEventListener != null) {
 				studentEventListener.buttonClicked(ev);
 			}
@@ -198,8 +209,10 @@ public class StudentPane {
 		return gpaT;
 	}
 
-	public TextField getMajorT() {
-		return majorT;
+	
+
+	public ComboBox getMajorCombo() {
+		return majorCombo;
 	}
 
 	public TextField getCreditsT() {
@@ -209,6 +222,8 @@ public class StudentPane {
 	
 
 	
+
+
 
 	public void setStudentDisplayTable(TableView studentDisplayTable) {
 		this.studentDisplayTable = studentDisplayTable;

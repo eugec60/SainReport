@@ -38,6 +38,7 @@ public class FindStudentPane {
 			}
 			
 			
+			
 			Stage secondaryStage = new Stage();
 			GridPane displayPane = new GridPane();
 			displayPane.setAlignment(Pos.CENTER);

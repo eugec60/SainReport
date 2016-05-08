@@ -9,13 +9,15 @@ public class TabsPane {
 	StudentPane sPane = new StudentPane();
 	FacultyPane fPane = new FacultyPane();
 	CoursePane cPane = new CoursePane();
-	TextbookPane tPane = new TextbookPane();
 	SainPane sainPane = new SainPane();
 	LoginPane loginPane = new LoginPane();
 	WhatIfPane whatIfPane = new WhatIfPane();
 	MajorPane majorPane = new MajorPane();
+	EditStudentSainPane editStudentSainPane = new EditStudentSainPane();
+	
 	FindStudentPane findStudentPane = new FindStudentPane();
-	Tab loginTab,studentTab,facultyTab,courseTab,textbookTab, sainTab,whatIfTab,majorTab,findStudentTab;
+	
+	Tab loginTab,studentTab,facultyTab,courseTab,textbookTab, sainTab,whatIfTab,majorTab,findStudentTab,editStudentSainTab;
 	public TabsPane() {
 		
 		//STUDENT TAB
@@ -37,10 +39,7 @@ public class TabsPane {
 		
 		
 		
-		//Textbook Tab
 		
-		 textbookTab = new Tab("Textbook");
-		textbookTab.setContent(tPane.getTextbookPane());
 		
 		//Sain Tab
 		
@@ -61,7 +60,8 @@ public class TabsPane {
 		findStudentTab = new Tab("Find Student");
 		findStudentTab.setContent(findStudentPane.getFindStudentGrid());
 		
-		
+		editStudentSainTab = new Tab("EDIT SAIN");
+		editStudentSainTab.setContent(editStudentSainPane.getSainGrid());
 		
 		
 		
@@ -87,9 +87,7 @@ public class TabsPane {
 		return cPane;
 	}
 
-	public TextbookPane gettPane() {
-		return tPane;
-	}
+	
 
 	public SainPane getSainPane() {
 		return sainPane;
@@ -111,6 +109,12 @@ public class TabsPane {
 
 	public FindStudentPane getFindStudentPane() {
 		return findStudentPane;
+	}
+	
+	
+
+	public EditStudentSainPane getEditStudentSainPane() {
+		return editStudentSainPane;
 	}
 
 	public Tab getLoginTab() {
@@ -148,6 +152,12 @@ public class TabsPane {
 	public Tab getFindStudentTab() {
 		return findStudentTab;
 	}
+
+	public Tab getEditStudentSainTab() {
+		return editStudentSainTab;
+	}
+	
+	
 	
 	
 	

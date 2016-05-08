@@ -18,7 +18,7 @@ public class MenuBars {
 		menuBars = new MenuBar();
 
 		Menu fileMenu = new Menu("File");
-		MenuItem readBinMenuItem = new MenuItem("Read From Binary File");
+	//	MenuItem readBinMenuItem = new MenuItem("Read From Binary File");
 		MenuItem saveMenuItem = new MenuItem("Save To Binary");
 		MenuItem exitMenuItem = new MenuItem("Exit");
 		
@@ -29,9 +29,12 @@ public class MenuBars {
 			}
 			
 		});
+		
+		
+			
 
 		fileMenu.getItems().addAll( saveMenuItem,
-				readBinMenuItem, new SeparatorMenuItem(), exitMenuItem);
+				 new SeparatorMenuItem(), exitMenuItem);
 
 		menuBars.getMenus().addAll(fileMenu);
 

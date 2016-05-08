@@ -25,7 +25,7 @@ public class Course implements Serializable {
 	}
 	
 	public Course(String courseTitle, String courseNum, String crn,
-			Textbook textbook, Faculty faculty, ArrayList<Student> student,
+			 Faculty faculty, ArrayList<Student> student,
 			String classAdress) {
 		super();
 		this.courseTitle = courseTitle;

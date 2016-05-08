@@ -7,41 +7,41 @@ public class Student extends Person implements Serializable {
 
 	private double gpa;
 	private String major;
-	private ArrayList<Course> coursesTaken = new ArrayList<>();
-	private ArrayList<Course> currentCourses = new ArrayList<>();
-	private ArrayList<Course> coursesToGraduate = new ArrayList<>();
+	private ArrayList<String> coursesTaken;
+	private ArrayList<String> currentCourses;
+	private ArrayList<String> coursesToGraduate;
 	private int credits;
 	
 
-	public Student(String fname, String lname, String phone, String adress, int id,
+	public Student(String fname, String lname, String phone, String adress,String username, String password,
 			double gpa, String major, int credits, Course courseTaken,
 			Course currentCourses2, Course coursesToGraduate2) {
-		super(fname, lname, phone, adress);
+		super(fname, lname, phone, adress,username,password);
 		
 		this.gpa = gpa;
 		this.major = major;
 		this.credits = credits;
+		coursesTaken = new ArrayList<>();
+		currentCourses = new ArrayList<>();
+		coursesToGraduate = new ArrayList<>();
 
-		coursesTaken.add(courseTaken);
-		currentCourses.add(currentCourses2);
-		coursesToGraduate.add(coursesToGraduate2);
+	
 
-		/*
-		 * splitCourse(courseTaken, this.coursesTaken);
-		 * splitCourse(currentCourses, this.currentCourses);
-		 * splitCourse(coursesToGraduate, this.coursesToGraduate);
-		 */
+	
 	}
 
-	public Student(String fname, String lname, String phone, String adress, int id,
+	public Student(String fname, String lname, String phone, String adress, String username, String password,
 			double gpa, String major, int credits) {
-		super(fname, lname, phone, adress);
+		super(fname, lname, phone, adress,username, password);
 		
 		this.gpa = gpa;
 		this.major = major;
 		this.credits = credits;
+		coursesTaken = new ArrayList<>();
+		currentCourses = new ArrayList<>();
+		coursesToGraduate = new ArrayList<>();
 		
-		setStatus(0);
+
 
 	}
 
@@ -51,6 +51,8 @@ public class Student extends Person implements Serializable {
 		setLname(student.getLname());
 		setPhone(student.getPhone());
 		setAdress(student.getAdress());
+		setUsername(student.getUsername());
+		setPassword(student.getPassword());
 		this.gpa = student.getGpa();
 		this.major = student.getMajor();
 		this.credits = student.getCredits();
@@ -67,32 +69,38 @@ public class Student extends Person implements Serializable {
 	// return student;
 	// }
 
-	public ArrayList<Course> getCoursesTaken() {
+	
+
+	
+
+	
+	
+	public double getGpa() {
+		return gpa;
+	}
+
+	public ArrayList<String> getCoursesTaken() {
 		return coursesTaken;
 	}
 
-	public void setCoursesTaken(Course course) {
-		coursesTaken.add(course);
+	public void setCoursesTaken(ArrayList<String> coursesTaken) {
+		this.coursesTaken = coursesTaken;
 	}
 
-	public ArrayList<Course> getCurrentCourses() {
+	public ArrayList<String> getCurrentCourses() {
 		return currentCourses;
 	}
 
-	public void setCurrentCourses(Course course) {
-		this.currentCourses.add(course);
+	public void setCurrentCourses(ArrayList<String> currentCourses) {
+		this.currentCourses = currentCourses;
 	}
 
-	public ArrayList<Course> getCoursesToGraduate() {
+	public ArrayList<String> getCoursesToGraduate() {
 		return coursesToGraduate;
 	}
 
-	public void setCoursesToGraduate(Course course) {
-		coursesToGraduate.add(course);
-	}
-
-	public double getGpa() {
-		return gpa;
+	public void setCoursesToGraduate(ArrayList<String> coursesToGraduate) {
+		this.coursesToGraduate = coursesToGraduate;
 	}
 
 	public void setGpa(double gpa) {
@@ -120,10 +128,14 @@ public class Student extends Person implements Serializable {
 		return "Student [gpa=" + gpa + ", major=" + major + ", coursesTaken="
 				+ coursesTaken + ", currentCourses=" + currentCourses
 				+ ", coursesToGraduate=" + coursesToGraduate + ", credits="
-				+ credits + ", getFname()=" + getFname()
-				+ ", getLname()=" + getLname() + ", getPhone()=" + getPhone()
-				+ ", getAdress()=" + getAdress() + "]";
+				+ credits + ", getFname()=" + getFname() + ", getLname()="
+				+ getLname() + ", getId()=" + getId() + ", getPhone()="
+				+ getPhone() + ", getAdress()=" + getAdress()
+				+ ", getUsername()=" + getUsername() + ", getPassword()="
+				+ getPassword() + "]";
 	}
+
+	
 	
 	
 

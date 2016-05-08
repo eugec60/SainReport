@@ -3,12 +3,14 @@ package eventListnersAndObjects;
 import java.util.EventObject;
 
 public class FacultyEventObjs extends EventObject {
-	
+
 	private String fname;
 	private String lname;
 	private String phone;
 	private String adress;
-	private int id;
+	private String username;
+	private String password;
+	private String id;
 	private String officeAdress;
 	private String title;
 	private String department;
@@ -20,19 +22,23 @@ public class FacultyEventObjs extends EventObject {
 	}
 
 	public FacultyEventObjs(Object source, String fname, String lname,
-			String phone, String adress,int id, String officeAdress, String title,
-			String department, String payScale) {
+			String phone, String adress, String username, String password,
+			String officeAdress, String title, String department,
+			String payScale) {
 		super(source);
 		this.fname = fname;
 		this.lname = lname;
 		this.phone = phone;
 		this.adress = adress;
-		this.id = id;
+		this.username = username;
+		this.password = password;
 		this.officeAdress = officeAdress;
 		this.title = title;
 		this.department = department;
 		this.payScale = payScale;
 	}
+	
+	
 
 	public String getFname() {
 		return fname;
@@ -49,10 +55,13 @@ public class FacultyEventObjs extends EventObject {
 	public String getAdress() {
 		return adress;
 	}
-	
 
-	public int getId() {
-		return id;
+	public String getUsername() {
+		return username;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 
 	public String getOfficeAdress() {

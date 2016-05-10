@@ -6,7 +6,7 @@ Also the jUnit test all pass the test individually but one does not pass when th
 
 -UML Diagram is complete and is under the UML Folder 
 -Program is complete, but is missing a What IF analysis 
-	-has user Authentication
+	-has user Authentication (to login as admin ************UserName= "Admin" password="Password"**************
 	-Search funcion complete
 	-Sain Report can be updated
 	-Save and load is complete
@@ -20,4 +20,3 @@ Also the jUnit test all pass the test individually but one does not pass when th
 
 Overall the only thing missing is a what if analysis so I would take a couple poits off for that.
 I had fun working on the project and it was definitely a learning experience. I got a lot out of it. Thanks for the assignment.
-
